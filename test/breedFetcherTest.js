@@ -15,4 +15,17 @@ describe('fetchBreedDescription', () => {
       done();
     });
   });
+  it('returns a string description for an invalid breed, via callback', (done) => {
+    fetchBreedDescription('Invalid', (err, desc) => {
+      // we expect no error for this scenario
+      assert.equal(err, null);
+
+      const expectedDesc = "Invalid breed";
+
+      // compare returned description
+      assert.equal(expectedDesc, desc.trim());
+
+      done();
+    });
+  });
 });
